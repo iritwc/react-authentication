@@ -6,7 +6,6 @@ export const getGoogleOAuthUrl = () => {
         'https://www.googleapis.com/auth/userinfo.profile'
     ];
 
-    // console.log(oauthClient);
     return oauthClient.generateAuthUrl({
         access_type: 'offline',
         prompt: 'consent',
