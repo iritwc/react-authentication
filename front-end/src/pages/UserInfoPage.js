@@ -13,7 +13,7 @@ export const UserInfoPage = () => {
     const user = useUser();
     const [token, setToken] = useToken();
 
-    const {id, email, info} = user;
+    const {id, email, isVerified, info} = user;
 
     const [successMessage, setSuccessMessage] = useMessage();
     const [errorMessage, setErrorMessage] = useMessage();
@@ -50,7 +50,6 @@ export const UserInfoPage = () => {
     }
     
     const resetValues = () => {
-        console.log(info)
        setFavoriteFood(info.favoriteFood);
        setHairColor(info.hairColor);
        setBio(info.bio);
@@ -60,6 +59,7 @@ export const UserInfoPage = () => {
     return (
         <div className="content-container">
             <h1>Info for {email}</h1>
+            {!isVerified && <div className='fail'>You won't be able to make changes until you verify your email</div>}
             {successMessage && <div className="success">Successfully saved user data!</div>}
             {errorMessage && <div className="fail">Uh oh... something went wrong and we couldn't save changes</div>}
             <label>

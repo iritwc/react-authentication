@@ -15,12 +15,11 @@ export const SignUpPage = () => {
     const onSignUpClicked = async () => {
         try {
             const response = await axios.post('/api/signup', {email, password});
-            console.log('on click', response)
             const {token} = response.data;
             setToken(token);
-            history.push('/');
+            history.push('/verify-email');
         } catch (err) {
-            console.log('signup page: ', err);
+            console.log(err);
         }
        
     }

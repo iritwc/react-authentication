@@ -3,6 +3,7 @@ import { UserInfoPage } from './pages/UserInfoPage';
 import { LogInPage } from './pages/LogInPage';
 import { SignUpPage } from './pages/SignUpPage';
 import { PrivateRoute } from './util/PrivateRoute';
+import { VerifyEmailPage } from './pages/VerifyEmailPage';
 
 export const Routes = () => {
     return (
@@ -16,6 +17,9 @@ export const Routes = () => {
                 </Route>
                 <Route path="/signup">
                     <SignUpPage />
+                </Route>
+                <Route path="/verify-email">
+                    <VerifyEmailPage />
                 </Route>
             </Switch>
         </Router>

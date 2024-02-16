@@ -32,7 +32,7 @@ export const LogInPage = () => {
             setToken(token);
             history.push('/');
         } catch (err) {
-            console.log('log in: ', err);
+            console.log(err);
         }
     }
     return (
