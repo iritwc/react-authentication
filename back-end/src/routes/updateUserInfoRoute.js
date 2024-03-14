@@ -23,9 +23,14 @@ export const updateUserInfoRoute = {
                 return  res.status(401).json({message: "Unable to verify token"});
             }
 
-            const {id} = decoded;
+            const {id, isVerified} = decoded;
+
             if (id !== userId) {
                 return res.status(403).json({message: "Not allowed to update that user\'s data"});
+            }
+
+            if (!isVerified) {
+                return res.status(403).json({message: "Verify your email before you can update data"});
             }
 
             const db = getDbConnection('react-auth-db');
@@ -35,7 +40,7 @@ export const updateUserInfoRoute = {
                 { returnOriginal: false}
             );
 
-            const { email, isVerified, info} = result.value;
+            const { email, info } = result.value;
 
             jwt.sign({id, email, isVerified, info}, process.env.JWT_SECRET, (err, token) => {
                 if (err) {
