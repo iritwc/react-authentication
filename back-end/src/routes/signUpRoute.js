@@ -21,6 +21,7 @@ export const signUpRoute = {
     const verificationString = uuid();
 
     const info = {
+      favoriteFood: "",
       hairColor: "",
       bio: "",
     };

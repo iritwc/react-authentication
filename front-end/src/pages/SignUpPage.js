@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export const SignUpPage = () => {
     const [, setToken] = useToken();
-    const [errorMessage, setErrorMessage] = useState('');
+    const [errorMessage,] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -21,8 +21,8 @@ export const SignUpPage = () => {
         } catch (err) {
             console.log(err);
         }
-       
     }
+    
     return (
         <div className="content-container">
             <h1>Sign Up</h1>

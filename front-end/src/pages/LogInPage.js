@@ -4,7 +4,7 @@ import { useToken } from '../auth/useToken';
 import axios from 'axios';
 
 export const LogInPage = () => {
-    const [token, setToken] = useToken();
+    const [, setToken] = useToken();
     const [errorMessage, setErrorMessage] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
