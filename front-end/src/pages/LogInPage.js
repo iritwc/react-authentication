@@ -2,15 +2,24 @@ import {useEffect, useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import { useToken } from '../auth/useToken';
 import axios from 'axios';
+import { useQueryParams } from '../util/useQueryParams';
 
 export const LogInPage = () => {
     const [, setToken] = useToken();
-    const [errorMessage, setErrorMessage] = useState('');
+    const [errorMessage, ] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [googleOuthUrl, setGoogleOauthUrl] = useState(null);
 
     const history = useHistory();
+    const { token : oAuthToken } = useQueryParams();
+
+    useEffect(()=> {
+        if (oAuthToken) {
+            setToken(oAuthToken);
+            history.push('/');
+        }
+    }, [oAuthToken, setToken, history]);
 
     useEffect(() => {
         async function fetchGoogleUrl() {
