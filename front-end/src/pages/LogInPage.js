@@ -6,7 +6,7 @@ import { useQueryParams } from '../util/useQueryParams';
 
 export const LogInPage = () => {
     const [, setToken] = useToken();
-    const [errorMessage, ] = useState('');
+    const [errorMessage, setErrorMessage ] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [googleOuthUrl, setGoogleOauthUrl] = useState(null);
@@ -40,8 +40,9 @@ export const LogInPage = () => {
             const {token} = response.data;
             setToken(token);
             history.push('/');
-        } catch (err) {
-            console.log(err);
+        } catch (e) {
+            console.log(e);
+            setErrorMessage(e.message)
         }
     }
     return (
